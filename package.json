@@ -1,0 +1,29 @@
+{
+  "name": "stub",
+  "version": "1.0.0",
+  "description": "swgoh stub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/c3po-modules/stub.git"
+  },
+  "author": "scuba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/c3po-modules/stub/issues"
+  },
+  "homepage": "https://gitlab.com/c3po-modules/stub#readme",
+  "dependencies": {
+    "async": "^3.2.4",
+    "crypto-js": "^4.1.1",
+    "google-auth-library": "^8.1.1",
+    "got": "^11.8.5",
+    "json-array-sorter": "0.0.5",
+    "node-fetch": "^2.6.9",
+    "qrate": "^1.2.1",
+    "uuid": "^8.3.2"
+  }
+}
