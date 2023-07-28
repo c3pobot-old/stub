@@ -1,8 +1,8 @@
 'use strict'
-const FormatGuild = require('./requests/format/formatGuild')
-const GetGuildId = require('./requests/getGuildId')
+const FormatGuild = require('../requests/format/formatGuild')
+const GetGuildId = require('../requests/getGuildId')
 const GetMembers = require('./getMembers')
-const QueryGuild = require('./requests/queryGuild')
+const QueryGuild = require('../requests/queryGuild')
 module.exports = async(opt = {})=>{
   try{
     let members, guild, needsFormat = false, guildCache = 'twGuildCache', playerCache = 'twPlayerCache'
