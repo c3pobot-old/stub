@@ -10,10 +10,18 @@ const getCachePlayers = async(memberIds = [], project)=>{
 }
 const getNewPlayers = async(missingMembers = [])=>{
   try{
-    let res = [], i = missingMembers.length
-    while(i--) res.push(GetPlayer({playerId: missingMembers[i].playerId, allyCode: missingMembers[i].allyCode?.toString()}, { collection: 'playerCache' }))
+    let res = [], players = [], i = missingMembers.length
+    const getGuildPlayer = async(player = {})=>{
+      try{
+        let obj = await GetPlayer({playerId: player.playerId, allyCode: player.allyCode?.toString()}, { collection: 'playerCache' })
+        if(obj) players.push(obj)
+      }catch(e){
+        throw(e)
+      }
+    }
+    while(i--) res.push(getGuildPlayer(missingMembers[i]))
     await Promise.all(res)
-    return res
+    return players
   }catch(e){
     console.error(e);
   }
@@ -21,8 +29,8 @@ const getNewPlayers = async(missingMembers = [])=>{
 module.exports = async(guildId, member = [], projection)=>{
   try{
     let foundMemberIds = [], memberIds = member.map(x=>x.playerId)
-    let res = await getCachePlayers(memberIds, project)
-    if(res?.length === member.length) return members
+    let res = await getCachePlayers(memberIds, projection)
+    if(res?.length === member.length) return res
     if(res?.length > 0 ) foundMemberIds = res.map(x=>x.playerId)
     let missingMembers = member.filter(x=>!foundMemberIds.includes(x.playerId))
     let missing = await getNewPlayers(missingMembers)
