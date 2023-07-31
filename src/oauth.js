@@ -91,20 +91,6 @@ module.exports = async(obj, method, dObj, payload, loginConfirmed = null)=>{
       await HP.ConfirmButton(obj, msg2send)
       return
     }
-
-    /*
-    if(!data || data.code == 5){
-      if(loginConfirmed === 'yes'){
-        identity = await GetIdentity(dObj.uId, dObj.type, true)
-        if(identity?.auth?.authId && identity?.auth?.authToken) data = await ProcessAPIRequest(method, payload, identity)
-      }else{
-        if(loginConfirmed !== 'no'){
-          await HP.ConfirmButton(obj, msg2send)
-          return
-        }
-      }
-    }
-    */
     if(data){
       if(data.code){
         return ({status: status, error: data})
