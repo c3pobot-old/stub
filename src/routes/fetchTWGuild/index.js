@@ -6,7 +6,7 @@ const QueryGuild = require('../requests/queryGuild')
 module.exports = async(opt = {})=>{
   try{
     let members, guild, needsFormat = false, guildCache = 'twGuildCache', playerCache = 'twPlayerCache'
-    if(opts.initial) guildCache = 'guildCache', playerCache = 'playerCache'
+    if(opt.initial) guildCache = 'guildCache', playerCache = 'playerCache'
     const guildId = await GetGuildId(opt)
     if(guildId){
       guild = (await mongo.find(guildCache, {_id: guildId}))[0]
