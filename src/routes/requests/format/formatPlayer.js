@@ -1,7 +1,7 @@
 'use strict'
 const CalcGearQuality = require('./calcGearQuality')
 const CalcModQuality = require('./calcModQuality')
-module.exports = (obj)=>{
+module.exports = (obj = {})=>{
   try{
     obj.updated = Date.now()
     /*
@@ -11,6 +11,7 @@ module.exports = (obj)=>{
       gear: CalcGearQuality(obj.rosterUnit, +obj.profileStat.find(x=>x.nameKey === 'STAT_GALACTIC_POWER_ACQUIRED_NAME').value)
     }
     */
+    obj.quality = obj.summary.quality
     obj.allyCode = +obj.allyCode
     obj.gp = +(obj.profileStat.find(x=>x.nameKey === 'STAT_GALACTIC_POWER_ACQUIRED_NAME').value)
     obj.gpChar = +(obj.profileStat.find(x=>x.nameKey === 'STAT_CHARACTER_GALACTIC_POWER_ACQUIRED_NAME').value)
