@@ -4,11 +4,13 @@ const CalcModQuality = require('./calcModQuality')
 module.exports = (obj)=>{
   try{
     obj.updated = Date.now()
+    /*
     obj.quality = {
       mods: CalcModQuality(obj.rosterUnit.filter(x=>x.combatType == 1), 9999),
       top: CalcModQuality(obj.rosterUnit.filter(x=>x.combatType == 1), 80),
       gear: CalcGearQuality(obj.rosterUnit, +obj.profileStat.find(x=>x.nameKey === 'STAT_GALACTIC_POWER_ACQUIRED_NAME').value)
     }
+    */
     obj.allyCode = +obj.allyCode
     obj.gp = +(obj.profileStat.find(x=>x.nameKey === 'STAT_GALACTIC_POWER_ACQUIRED_NAME').value)
     obj.gpChar = +(obj.profileStat.find(x=>x.nameKey === 'STAT_CHARACTER_GALACTIC_POWER_ACQUIRED_NAME').value)
